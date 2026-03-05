@@ -72,7 +72,14 @@ export default function RecordProvider({ children }) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
   }, [records, isLoading]);
 
-  const onCreate = ({ bookId, status, rating, memo, createdDate }) => {
+  const onCreate = ({
+    bookId,
+    status,
+    rating,
+    comment,
+    startDate,
+    endDate,
+  }) => {
     dispatch({
       type: "CREATE",
       data: {
@@ -80,16 +87,18 @@ export default function RecordProvider({ children }) {
         bookId,
         status,
         rating,
-        memo,
-        createdDate,
+        comment,
+        startDate,
+        endDate,
+        createdDate: new Date(),
       },
     });
   };
 
-  const onUpdate = ({ id, status, rating, memo, createdDate }) => {
+  const onUpdate = ({ id, status, rating, comment, createdDate }) => {
     dispatch({
       type: "UPDATE",
-      data: { id, status, rating, memo, createdDate },
+      data: { id, status, rating, comment, createdDate },
     });
   };
 
