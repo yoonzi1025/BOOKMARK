@@ -1,10 +1,12 @@
 import { useLocation } from "react-router-dom";
-import BookContentInfo from "../components/common/book/BookContentInfo";
+
 import Navbar from "../components/common/navbar/Navbar";
+import BookDetailInfo from "../components/common/book/BookDetailInfo";
 
 const BooksDetail = () => {
   const { state } = useLocation();
   const book = state.book;
+  console.log(book);
 
   if (!book) {
     return (
@@ -18,7 +20,7 @@ const BooksDetail = () => {
   return (
     <div>
       <Navbar />
-      <BookContentInfo book={book} />
+      <BookDetailInfo book={book} />
     </div>
   );
 };

@@ -1,23 +1,25 @@
 .status-badge {
   font-size: 11px;
   font-weight: 600;
-  color: #4ccd9e;
-  background-color: #edfaf4;
+  padding: 4px 10px;
   border-radius: 20px;
-  padding: 3px 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  background: #e8f8f1;
+  color: #2ea87a;
 }
 
 .status-reading {
-  color: rgb(220, 118, 118);
-  background-color: rgb(235, 194, 195);
+  background: #e8f0ff;
+  color: #5c7cfa;
 }
 
 .status-want {
-  color: rgb(229, 207, 125);
-  background-color: rgb(237, 228, 182);
+  background: #fff0f5;
+  color: #e05580;
 }
 
 .status-stopped {
-  color: rgb(85, 139, 216);
-  background-color: rgb(117, 200, 232);
+  background: #f3f3f3;
+  color: #9a9fa8;
 }

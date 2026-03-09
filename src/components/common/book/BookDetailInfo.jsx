@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import "./Book.css";
-import "./Record.css";
+import "../record/MyRecord.css";
 import { FaPlus } from "react-icons/fa";
 import { FaCommentDots } from "react-icons/fa";
 import { GoEye } from "react-icons/go";
@@ -9,11 +9,10 @@ import {
   RecordDispatchContext,
   RecordStateContext,
 } from "../../../context/records/RecordProvider";
-import Rating from "../rating/Rating";
-import StatusBadge from "../status/StatusBadge";
 import { useNavigate } from "react-router-dom";
+import MyRecord from "../record/MyRecord";
 
-const BookContentInfo = ({ book }) => {
+const BookDetailInfo = ({ book }) => {
   const nav = useNavigate();
   const [open, setOpen] = useState(false);
   // 현재 기록넣기
@@ -67,8 +66,9 @@ const BookContentInfo = ({ book }) => {
 
   const onClickDelete = () => {
     if (window.confirm("독서 기록을 정말 삭제할까요? 다시 복구되지 않아요")) {
+      console.log("클릭");
       onDelete(currentRecord.id);
-      nav("/books");
+      nav(`/books/${book.id}`, { state: { book } });
     }
   };
 
@@ -110,50 +110,25 @@ const BookContentInfo = ({ book }) => {
             </div>
           </div>
         </div>
-        {currentRecord ? (
-          <div className="record-wrapper">
-            <div className="record-section">
-              <div className="record-title">독서기록</div>
-
-              <div className="record-card">
-                <div className="record-card-header">
-                  <span className="record-card-date">
-                    {new Date(currentRecord.createdDate).toLocaleDateString()}
-                  </span>
-                  <div className="record-card-btn">
-                    <button className="record-btn" onClick={onClickUpdate}>
-                      수정
-                    </button>
-                    <button
-                      className="record-btn btn-delete"
-                      onClick={onClickDelete}
-                    >
-                      삭제
-                    </button>
-                  </div>
-                </div>
-
-                <div className="record-card-state">
-                  <StatusBadge status={currentRecord.status} />
-                  <span className="record-card-period">
-                    {currentRecord.startDate} ~ {currentRecord.endDate}
-                  </span>
-                </div>
-
-                <Rating rating={currentRecord.rating} />
-
-                <div className="record-card-comment">
-                  {currentRecord.comment}
-                </div>
+        <div className="record-wrapper">
+          <div className="record-section">
+            {currentRecord ? (
+              <MyRecord
+                currentRecord={currentRecord}
+                onClickUpdate={onClickUpdate}
+                onClickDelete={onClickDelete}
+              />
+            ) : (
+              <div className="record-empty">
+                <div>아직 기록이 없습니다.</div>
+                <button onClick={onClickCreate}>기록 작성하기</button>
               </div>
-            </div>
+            )}
           </div>
-        ) : (
-          <div className="record-empty">아직 기록이 없습니다.</div>
-        )}
+        </div>
       </div>
     </section>
   );
 };
 
-export default BookContentInfo;
+export default BookDetailInfo;

@@ -37,9 +37,10 @@ const BookList = ({ books }) => {
         </select>
       </div>
       <div className="list-wrapper">
-        {sortedData.map((book) => (
-          <BookBasicInfo key={book.bookId} book={book} />
-        ))}
+        {sortedData.map((book, index) => {
+          console.log(book, index);
+          return <BookBasicInfo key={book.id} book={book} />;
+        })}
       </div>
     </section>
   );

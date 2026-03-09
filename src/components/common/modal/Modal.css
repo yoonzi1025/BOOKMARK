@@ -154,12 +154,24 @@ body.modal-open {
   color: #5a5f68;
   margin-bottom: 12px;
 }
-
-.date {
+/* .date {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
   margin-bottom: 20px;
+} */
+
+.date {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.date-divider {
+  margin-bottom: 6px;
+  color: #777;
 }
 
 .date-field {
@@ -178,13 +190,22 @@ body.modal-open {
 .date-field input[type="date"] {
   width: 100%;
   background: #eee;
-
   border-radius: 8px;
   padding: 10px 13px;
   font-size: 13px;
   outline: none;
   border: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.reading-status-box {
+  width: 100%;
+  background-color: #eee;
+  border-radius: 8px;
+  padding: 10px 13px;
+  font-size: 13px;
+  color: #5a5f68;
+  font-weight: 700;
+  margin-top: 22px;
 }
 
 .date-field input[type="date"]:focus {

@@ -6,7 +6,7 @@ import { STATUS_ICONS } from "../../../constants/statusIcon";
 import Rating from "../rating/Rating";
 
 const Modal = ({ open, onClose, onSubmit, initData }) => {
-  const [status, setStatus] = useState();
+  const [status, setStatus] = useState("reading");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [rating, setRating] = useState(0);
@@ -68,7 +68,9 @@ const Modal = ({ open, onClose, onSubmit, initData }) => {
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
-          <div className="modal-title">어떤 책인가요?</div>
+          <div className="modal-title">
+            {initData ? "독서 기록 수정" : "독서 기록 작성"}
+          </div>
           <div
             className="btn-close"
             style={{ display: "flex", cursor: "pointer" }}
@@ -99,41 +101,60 @@ const Modal = ({ open, onClose, onSubmit, initData }) => {
               );
             })}
           </div>
-          <div className="divider" />
-          <div className="datd-section">독서 기간</div>
-          <div className="date">
-            <div className="date-field">
-              <label>시작일</label>
-              <input type="date" value={startDate} onChange={getStartDate} />
+          {status !== "want" && (
+            <>
+              <div className="datd-section">독서 기간</div>
+              <div className="date">
+                <div className="date-field">
+                  <label>시작일</label>
+                  <input
+                    type="date"
+                    value={startDate}
+                    onChange={getStartDate}
+                  />
+                </div>
+
+                <div className="date-divider">~</div>
+                {status === "reading" ? (
+                  <div className="reading-status-box">읽는 중</div>
+                ) : (
+                  <div className="date-field">
+                    <label>종료일</label>
+                    <input type="date" value={endDate} onChange={getEndDate} />
+                  </div>
+                )}
+              </div>
+            </>
+          )}
+          {status === "done" && (
+            <div className="rating-section">
+              <div className="rating-label">평점</div>
+              <Rating rating={rating} onChange={onClickStar} />
             </div>
-            <div className="date-field">
-              <label>종료일</label>
-              <input type="date" value={endDate} onChange={getEndDate} />
+          )}
+
+          {(status === "done" || status === "stopped") && (
+            <div className="comment-header">
+              <div className="section-label" style={{ marginBottom: 0 }}>
+                한줄평
+              </div>
+              <textarea
+                value={comment}
+                className="textarea"
+                onChange={onChangComment}
+                placeholder="짧은 감상평을 남겨보세요."
+                maxLength={500}
+                rows={3}
+              />
             </div>
-          </div>
-          <div className="rating-section">
-            <div className="rating-label">평점</div>
-            <Rating rating={rating} onChange={onClickStar} />
-          </div>
-          <div className="comment-header">
-            <div className="section-label" style={{ marginBottom: 0 }}>
-              한줄평
-            </div>
-            <textarea
-              value={comment}
-              className="textarea"
-              onChange={onChangComment}
-              placeholder="짧은 감상평을 남겨보세요."
-              maxLength={500}
-              rows={3}
-            />
-          </div>
+          )}
+
           <div className="btn-section">
             <button className="btn-close" onClick={onClose}>
               취소하기
             </button>
             <button className="btn-save" onClick={onClickSubmitBtn}>
-              저장하기
+              {initData ? "수정하기" : "저장하기"}
             </button>
           </div>
         </div>

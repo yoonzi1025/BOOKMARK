@@ -3,10 +3,12 @@ import "./Book.css";
 
 const BookBasicInfo = ({ book }) => {
   const nav = useNavigate();
+  console.log(book);
+
   return (
     <section
       className="book-card"
-      onClick={() => nav(`../../books/${book.bookId}`, { state: { book } })}
+      onClick={() => nav(`/books/${book.id}`, { state: { book } })}
     >
       {/* 책 표지 */}
       <div className="book-cover">
@@ -23,7 +25,7 @@ const BookBasicInfo = ({ book }) => {
           className="more-btn"
           onClick={(e) => {
             e.stopPropagation();
-            nav(`/books/${book.bookId}`);
+            nav(`/books/${book.id}`, { state: { book } });
           }}
         >
           더 보기

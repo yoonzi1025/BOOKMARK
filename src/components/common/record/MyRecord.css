@@ -1,26 +1,26 @@
-.record-wrapper,
-.record-empty {
+.record-wrapper {
   margin-top: 30px;
+  background-color: #f8f8f8;
+  border-radius: 12px;
+  padding: 16px 18px;
 }
 
 .record-title {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 700;
+
   color: #2d3a36;
-  margin-bottom: 4px;
 }
 
 .record-section {
+  background-color: white;
+  border: 1.5px solid #e8f0ed;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
 .record-card {
-  background-color: white;
-  border: 1.5px solid #e8f0ed;
-  border-radius: 12px;
-  padding: 16px 18px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -35,12 +35,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 8px;
 }
 
 .record-card-date {
   font-size: 12px;
   font-weight: 600;
   color: #a0aeaa;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #eaf1ee;
+  margin-bottom: 4px;
 }
 
 .record-card-btn {
@@ -95,4 +99,33 @@
   font-size: 13px;
   color: #3d4f49;
   line-height: 1.6;
+}
+
+.record-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 203px;
+  gap: 16px;
+  color: #4a5568;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.record-empty button {
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 999px;
+  border: 1.5px solid #ffc107;
+  background: white;
+  color: #ffc107;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+
+.record-empty button:hover {
+  background-color: #ffc107;
+  color: white;
 }
