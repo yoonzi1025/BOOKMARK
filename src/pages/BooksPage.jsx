@@ -7,7 +7,6 @@ const BooksPage = () => {
   const [books] = useState(MOCK_BOOKS);
   return (
     <div>
-      <Navbar />
       <BookList books={books} />
     </div>
   );

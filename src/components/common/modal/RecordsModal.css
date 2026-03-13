@@ -298,6 +298,7 @@ body.modal-open {
   padding: 15px;
   transition: all 0.18s;
   cursor: pointer;
+  border: none;
 }
 
 .btn-section button:first-child:hover {

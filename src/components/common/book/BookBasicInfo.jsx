@@ -20,17 +20,6 @@ const BookBasicInfo = ({ book }) => {
         <p className="book-author">{book.author}</p>
         <p className="book-info">{book.summary}</p>
       </div>
-      <div className="book-more">
-        <button
-          className="more-btn"
-          onClick={(e) => {
-            e.stopPropagation();
-            nav(`/books/${book.id}`, { state: { book } });
-          }}
-        >
-          더 보기
-        </button>
-      </div>
     </section>
   );
 };

@@ -74,7 +74,7 @@ export default function RecordProvider({ children }) {
 
   const onCreate = ({
     bookId,
-    status,
+    readingStatus,
     rating,
     comment,
     startDate,
@@ -85,7 +85,7 @@ export default function RecordProvider({ children }) {
       data: {
         id: idRef.current++,
         bookId,
-        status,
+        readingStatus,
         rating,
         comment,
         startDate,
@@ -98,7 +98,7 @@ export default function RecordProvider({ children }) {
   const onUpdate = ({
     id,
     bookId,
-    status,
+    readingStatus,
     rating,
     comment,
     startDate,
@@ -110,7 +110,7 @@ export default function RecordProvider({ children }) {
       data: {
         id,
         bookId,
-        status,
+        readingStatus,
         rating,
         comment,
         startDate,

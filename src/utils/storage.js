@@ -45,13 +45,13 @@ export default function App() {
     setIsLoading(false);
   }, []);
 
-  const onCreate = ({ bookId, status, rating, memo, createdDate }) => {
+  const onCreate = ({ bookId, readingStatus, rating, memo, createdDate }) => {
     dispatch({
       type: "CREATE",
       data: {
         id: idRef.current++,
         bookId,
-        status,
+        readingStatus,
         rating,
         memo,
         createdDate,
@@ -59,10 +59,10 @@ export default function App() {
     });
   };
 
-  const onUpdate = ({ id, status, rating, memo, createdDate }) => {
+  const onUpdate = ({ id, readingStatus, rating, memo, createdDate }) => {
     dispatch({
       type: "UPDATE",
-      data: { id, status, rating, memo, createdDate },
+      data: { id, readingStatus, rating, memo, createdDate },
     });
   };
 

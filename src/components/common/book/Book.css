@@ -32,7 +32,8 @@
   margin: 20px auto 0;
   padding: 0 16px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: start;
   overflow: visible;
 }
@@ -42,30 +43,30 @@
 
 .book-card {
   position: relative;
-  overflow: visible;
-  padding-left: 130px;
+  overflow: hidden;
+  padding: 16px;
   display: flex;
+  gap: 16px;
   background-color: white;
-  min-height: 200px;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
-  max-width: 400px;
+  min-height: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   width: 100%;
-  justify-self: center;
   cursor: pointer;
+}
+
+.book-card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
 }
 
 .book-cover {
   width: 95px;
   height: 135px;
   display: flex;
+  flex-shrink: 0;
   justify-content: center;
   align-items: center;
-  background: #f3f5f8;
-  border: 1px solid #1e2530;
-  position: absolute;
-  top: 20%;
-  left: 16px;
-  transform: translateY(-50%);
+  background-color: #f3f5f8;
   overflow: hidden;
 }
 
@@ -111,31 +112,6 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-
-.book-more {
-  margin: auto 10px 10px 0;
-
-  display: flex;
-  justify-content: flex-end;
-  padding-top: 6px;
-}
-
-.more-btn {
-  padding: 12px 28px;
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 999px;
-  border: 1px solid #dfe3e8;
-  background: white;
-  color: #1e2530;
-  cursor: pointer;
-}
-
-.more-btn:hover {
-  background: #ffc107;
-  color: white;
-  border-color: #ffc107;
 }
 
 /*******************/
@@ -202,12 +178,27 @@
   cursor: pointer;
   color: #444;
   font-size: 13px;
-  font-weight: 500;
-  transition: color 0.15s;
+  transition: all 0.18s ease;
+  position: relative;
 }
 
-.btn-container .btn:hover {
+.btn-container .btn-info:hover {
   color: #ffc107;
+}
+
+.btn-container .btn-info:active {
+  transform: scale(0.95);
+  color: #e6a800;
+}
+
+.btn-container .btn-info + .btn-info::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background-color: #e0e0e0;
 }
 
 .book-summary {

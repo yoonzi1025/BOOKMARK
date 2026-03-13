@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import StatusBadge from "../status/StatusBadge";
 import "./MyLibraryBookCard.css";
 
 const MyLibraryBookCard = ({ filterBooks, onClickBookCard }) => {
+  const nav = useNavigate();
   return (
     <div className="library-book-wrapper">
       <div className="library-book">
@@ -20,7 +22,19 @@ const MyLibraryBookCard = ({ filterBooks, onClickBookCard }) => {
               <p className="library-book-author">{book.author}</p>
               <p className="book-info">{book.summary}</p>
             </div>
-            <StatusBadge status={book.status} />
+
+            <div className="library-book-side">
+              <StatusBadge readingStatus={book.readingStatus} />
+              <button
+                className="more-btn"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  nav(`/books/${book.id}`, { state: { book } });
+                }}
+              >
+                더 보기
+              </button>
+            </div>
           </div>
         ))}
       </div>

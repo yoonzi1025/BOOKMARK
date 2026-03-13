@@ -19,10 +19,7 @@ const Navbar = () => {
           <button className="nav-item" onClick={() => nav(`/records/mypage`)}>
             내 서재
           </button>
-          <button
-            className="nav-item"
-            onClick={() => nav(`/records/reading-log`)}
-          >
+          <button className="nav-item" onClick={() => nav(`/stats`)}>
             독서기록
           </button>
         </nav>

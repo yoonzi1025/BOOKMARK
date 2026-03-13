@@ -1,11 +1,13 @@
 import "./StatusBadge.css";
 import { STATUS_OPTIONS } from "../../../constants/statusOption";
 
-const StatusBadge = ({ status }) => {
-  const currentStatus = STATUS_OPTIONS.find((option) => option.key === status);
+const StatusBadge = ({ readingStatus }) => {
+  const currentStatus = STATUS_OPTIONS.find(
+    (option) => option.key === readingStatus
+  );
   if (!currentStatus) return null;
   return (
-    <span className={`status-badge  status-${status}`}>
+    <span className={`status-badge  status-${readingStatus}`}>
       {currentStatus.label}
     </span>
   );

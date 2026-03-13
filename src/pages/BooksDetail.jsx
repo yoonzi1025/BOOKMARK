@@ -5,8 +5,8 @@ import BookDetailInfo from "../components/common/book/BookDetailInfo";
 
 const BooksDetail = () => {
   const { state } = useLocation();
+
   const book = state.book;
-  console.log(book);
 
   if (!book) {
     return (
@@ -19,7 +19,6 @@ const BooksDetail = () => {
 
   return (
     <div>
-      <Navbar />
       <BookDetailInfo book={book} />
     </div>
   );

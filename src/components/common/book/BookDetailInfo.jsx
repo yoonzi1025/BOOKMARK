@@ -3,8 +3,7 @@ import "./Book.css";
 import "../record/MyRecord.css";
 import { FaPlus } from "react-icons/fa";
 import { FaCommentDots } from "react-icons/fa";
-import { GoEye } from "react-icons/go";
-import Modal from "../modal/Modal";
+import RecordsModal from "../modal/RecordsModal";
 import {
   RecordDispatchContext,
   RecordStateContext,
@@ -24,7 +23,9 @@ const BookDetailInfo = ({ book }) => {
   const handleClose = () => setOpen(false);
 
   const records = useContext(RecordStateContext);
-  const currentRecord = records.find((record) => record.bookId === book.id);
+  const currentRecord = records.find(
+    (record) => String(record.bookId) === String(book.id)
+  );
 
   const { onCreate, onUpdate, onDelete } = useContext(RecordDispatchContext);
   const onSubmit = (recordData) => {
@@ -33,35 +34,67 @@ const BookDetailInfo = ({ book }) => {
       onUpdate({
         id: editingRecord.id,
         bookId: book.id,
-        status: recordData.status,
+        readingStatus: recordData.readingStatus,
         rating: recordData.rating,
         comment: recordData.comment,
         startDate: recordData.startDate,
         endDate: recordData.endDate,
+        createdDate: recordData.createdDate,
       });
     } else {
       // 새기록
       onCreate({
         bookId: book.id,
-        status: recordData.status,
+        readingStatus: recordData.readingStatus,
         rating: recordData.rating,
         comment: recordData.comment,
         startDate: recordData.startDate,
         endDate: recordData.endDate,
+        createdDate: recordData.createdDate,
       });
     }
 
     handleClose();
   };
 
+  // 기록없음
   const onClickCreate = () => {
     setEditingRecord(null);
     handleOpen();
   };
 
+  // 기록있음
   const onClickUpdate = () => {
     setEditingRecord(currentRecord);
     handleOpen();
+  };
+
+  // const onClickComment = () => {
+  //   if(currentRecord){
+  //     setEditingRecord(currentRecord);
+  //   }else{
+  //     setEditingRecord(null);
+  //   }
+  //   handleOpen();
+  // }
+
+  const onClickWant = () => {
+    if (currentRecord) {
+      onUpdate({
+        ...currentRecord,
+        readingStatus: "want",
+      });
+    } else {
+      onCreate({
+        bookId: book.id,
+        readingStatus: "want",
+        rating: 0,
+        comment: "",
+        startDate: "",
+        endDate: "",
+        createdDate: "",
+      });
+    }
   };
 
   const onClickDelete = () => {
@@ -71,6 +104,8 @@ const BookDetailInfo = ({ book }) => {
       nav(`/books/${book.id}`, { state: { book } });
     }
   };
+
+  /* 기록 있음 */
 
   if (!book) return null;
 
@@ -83,21 +118,19 @@ const BookDetailInfo = ({ book }) => {
           </div>
           <div className="content-info">
             <div className="btn-container">
-              <button className="btn-info">
+              <button className="btn-info" onClick={onClickWant}>
                 <FaPlus />
                 보고싶어요
               </button>
-              <button className="btn-info" onClick={onClickCreate}>
+              <button
+                className="btn-info"
+                onClick={currentRecord ? onClickUpdate : onClickCreate}
+              >
                 <FaCommentDots />
-                코멘트
-              </button>
-
-              <button className="btn-info">
-                <GoEye />
-                보는 중
+                기록 남기기
               </button>
             </div>
-            <Modal
+            <RecordsModal
               open={open}
               onClose={handleClose}
               onSubmit={onSubmit}

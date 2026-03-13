@@ -1,16 +1,23 @@
-import "./Modal.css";
+import "./RecordsModal.css";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import { useEffect, useState } from "react";
 import { STATUS_OPTIONS } from "../../../constants/statusOption";
 import { STATUS_ICONS } from "../../../constants/statusIcon";
 import Rating from "../rating/Rating";
 
-const Modal = ({ open, onClose, onSubmit, initData, mode = "create" }) => {
-  const [status, setStatus] = useState("reading");
+const RecordsModal = ({
+  open,
+  onClose,
+  onSubmit,
+  initData,
+  mode = "create",
+}) => {
+  const [readingStatus, setReadingStatus] = useState("done");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
+  const [createdDate, setCreatedDate] = useState(new Date());
 
   const isViewMode = mode === "view";
   const isEditMode = mode === "edit";
@@ -25,13 +32,14 @@ const Modal = ({ open, onClose, onSubmit, initData, mode = "create" }) => {
     if (!open) return;
     console.log("Modal initData:", initData);
     if (initData) {
-      setStatus(initData.status || "reading");
+      setReadingStatus(initData.readingStatus || "done");
       setRating(initData.rating || 0);
       setComment(initData.comment || "");
       setStartDate(initData.startDate || "");
       setEndDate(initData.endDate || "");
+      setCreatedDate(initData.createdDate || "");
     } else {
-      setStatus("reading");
+      setReadingStatus("done");
       setRating(0);
       setComment("");
       setStartDate("");
@@ -64,11 +72,12 @@ const Modal = ({ open, onClose, onSubmit, initData, mode = "create" }) => {
   const onClickSubmitBtn = () => {
     if (isViewMode || !onSubmit) return;
     onSubmit({
-      status,
+      readingStatus,
       rating,
       comment,
       startDate,
       endDate,
+      createdDate,
     });
   };
 
@@ -88,13 +97,13 @@ const Modal = ({ open, onClose, onSubmit, initData, mode = "create" }) => {
       <div className="modal" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <div className="modal-title">{getModalTitle()}</div>
-          <div
+          <button
             className="btn-close"
             style={{ display: "flex", cursor: "pointer" }}
             onClick={() => onClose()}
           >
             <IoMdCloseCircleOutline size={34} />
-          </div>
+          </button>
         </div>
         <div className="modal-section">
           <div className="section-label">독서 상태</div>
@@ -104,12 +113,12 @@ const Modal = ({ open, onClose, onSubmit, initData, mode = "create" }) => {
               return (
                 <div
                   className={`btn-status ${
-                    status === option.key ? "active" : ""
+                    readingStatus === option.key ? "active" : ""
                   } ${isViewMode ? "readonly" : ""}`}
                   key={option.key}
                   onClick={() => {
                     if (isViewMode) return;
-                    setStatus(option.key);
+                    setReadingStatus(option.key);
                   }}
                 >
                   <div className="btn-status-icon">
@@ -122,14 +131,14 @@ const Modal = ({ open, onClose, onSubmit, initData, mode = "create" }) => {
             })}
           </div>
 
-          {status === "want" && (
+          {readingStatus === "want" && (
             <textarea
               className="textarea"
               placeholder="아직 독서를 시작하지 않았어요."
             />
           )}
 
-          {status !== "want" && (
+          {readingStatus !== "want" && (
             <>
               <div className="date-section">독서 기간</div>
               <div className="date">
@@ -144,7 +153,7 @@ const Modal = ({ open, onClose, onSubmit, initData, mode = "create" }) => {
                 </div>
 
                 <div className="date-divider">~</div>
-                {status === "reading" ? (
+                {readingStatus === "reading" ? (
                   <div className="reading-status-box">읽는 중</div>
                 ) : (
                   <div className="date-field">
@@ -160,14 +169,14 @@ const Modal = ({ open, onClose, onSubmit, initData, mode = "create" }) => {
               </div>
             </>
           )}
-          {status === "done" && (
+          {readingStatus === "done" && (
             <div className="rating-section">
               <div className="rating-label">평점</div>
               <Rating rating={rating} onChange={onClickStar} />
             </div>
           )}
 
-          {(status === "done" || status === "stopped") && (
+          {(readingStatus === "done" || readingStatus === "stopped") && (
             <div className="comment-header">
               <div className="section-label" style={{ marginBottom: 0 }}>
                 한줄평
@@ -200,4 +209,4 @@ const Modal = ({ open, onClose, onSubmit, initData, mode = "create" }) => {
   );
 };
 
-export default Modal;
+export default RecordsModal;
