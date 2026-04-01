@@ -1,16 +1,437 @@
-.status-page {
+.stats-page-wrapper {
   width: 100%;
   min-height: 100vh;
-  padding-bottom: 30px;
-  background-color: #f8f8f8;
 }
 
-.status-section {
-  max-width: 1200px;
-  width: 100%;
+.stats-page-container {
+  max-width: 900px;
   margin: 0 auto;
+  padding: 0 var(--space-3);
+}
+
+.stats-page-section {
   display: flex;
   flex-direction: column;
+  gap: var(--space-6);
+}
+
+.stats-page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stats-page-label {
+  margin: 0;
+  font-size: var(--font-xs);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.stats-page-title {
+  margin: 0;
+  font-size: var(--font-xl);
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+.stats-page-description {
+  margin: 0;
+  font-size: var(--font-sm);
+  line-height: 1.7;
+  color: var(--text-sub);
+}
+
+/* ───────── summary ───────── */
+.stats-summary {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+
+.stats-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-4);
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stats-label {
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+  margin-bottom: var(--space-1);
+}
+
+.stats-num {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--accent-name);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.stats-unit {
+  font-size: var(--font-sm);
+  color: var(--text-sub);
+  margin-left: 4px;
+}
+
+/* ───────── chart layout ───────── */
+.stats-chart-wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: var(--space-4);
+}
+
+.stats-chart-left,
+.stats-chart-right {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.stats-chart-right {
+  align-self: stretch;
+}
+
+/* ───────── card ───────── */
+.stats-chart-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-4);
+}
+
+.stats-chart-title {
+  margin: var(--space-2) 0 var(--space-4) 0;
+  text-align: center;
+  font-size: var(--font-md);
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* ───────── chart box ───────── */
+.stats-chart-box {
+  position: relative;
+  width: 100%;
+  height: 220px;
+}
+
+/* ───────── pie ───────── */
+.stats-pie-card {
+  min-height: 289px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.stats-pie-layout {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 20px;
+  justify-content: center;
+  gap: var(--space-5);
+}
+
+.stats-pie-chart-box {
+  width: 126px;
+  height: 126px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stats-pie-chart-box canvas {
+  width: 126px !important;
+  height: 126px !important;
+}
+
+/* ───────── legend ───────── */
+.stats-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 92px;
+}
+
+.stats-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-xs);
+  font-weight: 600;
+  color: var(--text-sub);
+}
+
+.stats-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.stats-legend-text {
+  white-space: nowrap;
+}
+
+/* ───────── calendar ───────── */
+.stats-calendar-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--border-light);
+}
+
+.stats-calendar-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  text-align: left;
+  margin: var(--space-6) 0 0 0;
+}
+
+.stats-calendar-label {
+  margin: 0;
+  font-size: var(--font-xs);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.stats-calendar-title {
+  margin: 0;
+  font-size: var(--font-xl);
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.stats-calendar-description {
+  margin: 0;
+  font-size: var(--font-sm);
+  line-height: 1.6;
+  color: var(--text-sub);
+}
+
+/* 1. 태블릿 / 작은 노트북 */
+@media (max-width: 1024px) {
+  .stats-page-section {
+    gap: var(--space-5);
+  }
+
+  .stats-chart-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-pie-card {
+    min-height: auto;
+  }
+
+  .stats-pie-layout {
+    justify-content: center;
+  }
+
+  .stats-page-title,
+  .stats-calendar-title {
+    font-size: var(--font-lg);
+  }
+
+  .stats-chart-card {
+    padding: var(--space-4);
+  }
+}
+
+/* 2. 모바일 */
+@media (max-width: 640px) {
+  .stats-page-container {
+    padding: 0 var(--space-2);
+  }
+
+  .stats-page-section {
+    gap: var(--space-4);
+  }
+
+  .stats-page-header {
+    gap: 8px;
+  }
+
+  .stats-page-label,
+  .stats-calendar-label {
+    letter-spacing: 0.14em;
+  }
+
+  .stats-page-title,
+  .stats-calendar-title {
+    font-size: var(--font-md);
+    line-height: 1.4;
+  }
+
+  .stats-page-description,
+  .stats-calendar-description {
+    font-size: var(--font-xs);
+    line-height: 1.6;
+  }
+
+  .stats-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-box {
+    min-height: 96px;
+    padding: var(--space-3);
+  }
+
+  .stats-num {
+    font-size: 32px;
+  }
+
+  .stats-chart-card {
+    padding: var(--space-3);
+  }
+
+  .stats-chart-title {
+    margin: var(--space-1) 0 var(--space-3) 0;
+    font-size: var(--font-sm);
+  }
+
+  .stats-chart-box {
+    height: 220px;
+  }
+
+  .stats-pie-layout {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .stats-pie-chart-box {
+    width: 140px;
+    height: 140px;
+  }
+
+  .stats-pie-chart-box canvas {
+    width: 140px !important;
+    height: 140px !important;
+  }
+
+  .stats-legend {
+    min-width: 0;
+    align-items: center;
+  }
+
+  .stats-calendar-section {
+    gap: var(--space-3);
+  }
+
+  .stats-calendar-header {
+    margin: var(--space-5) 0 0 0;
+  }
+}
+
+/* 3. 작은 모바일 */
+@media (max-width: 480px) {
+  .stats-page-container {
+    padding: 0;
+  }
+
+  .stats-page-section {
+    gap: var(--space-3);
+  }
+
+  .stats-page-label,
+  .stats-calendar-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+
+  .stats-page-title,
+  .stats-calendar-title {
+    font-size: var(--font-sm);
+  }
+
+  .stats-page-description,
+  .stats-calendar-description {
+    font-size: 10px;
+    line-height: 1.55;
+  }
+
+  .stats-summary {
+    gap: var(--space-2);
+  }
+
+  .stats-box {
+    min-height: 88px;
+    padding: var(--space-2);
+  }
+
+  .stats-label {
+    font-size: 10px;
+  }
+
+  .stats-num {
+    font-size: 28px;
+  }
+
+  .stats-unit {
+    font-size: 10px;
+  }
+
+  .stats-chart-card {
+    padding: var(--space-2);
+  }
+
+  .stats-chart-title {
+    font-size: var(--font-xs);
+    margin-bottom: var(--space-2);
+  }
+
+  .stats-chart-box {
+    height: 200px;
+  }
+
+  .stats-pie-layout {
+    gap: var(--space-3);
+  }
+
+  .stats-pie-chart-box {
+    width: 126px;
+    height: 126px;
+  }
+
+  .stats-pie-chart-box canvas {
+    width: 126px !important;
+    height: 126px !important;
+  }
+
+  .stats-legend {
+    gap: 6px;
+  }
+
+  .stats-legend-item {
+    font-size: 10px;
+    gap: 5px;
+  }
+
+  .stats-legend-dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  .stats-calendar-header {
+    margin: var(--space-4) 0 0 0;
+  }
 }

@@ -1,0 +1,158 @@
+.notfound-page {
+  min-height: calc(100vh - 64px);
+  padding: 60px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-page);
+}
+
+.notfound-card {
+  width: 100%;
+  max-width: 520px;
+  padding: 48px 32px;
+  text-align: center;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-sm);
+}
+
+.notfound-code {
+  margin-bottom: var(--space-2);
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--accent-name);
+}
+
+.notfound-title {
+  margin-bottom: var(--space-2);
+  font-size: var(--font-2xl);
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.notfound-description {
+  margin-bottom: var(--space-5);
+  font-size: var(--font-md);
+  line-height: 1.6;
+  color: var(--text-sub);
+}
+
+.notfound-actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.notfound-btn {
+  min-width: 120px;
+  height: 42px;
+  padding: 0 16px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-pill);
+  background: var(--bg-card);
+  color: var(--text-main);
+  font-size: var(--font-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition), border-color var(--transition),
+    color var(--transition);
+}
+
+.notfound-btn:hover {
+  background: var(--bg-hover);
+}
+
+.notfound-btn.primary {
+  border-color: var(--accent-name);
+  background: var(--accent-name);
+  color: var(--text-light);
+}
+
+.notfound-btn.primary:hover {
+  background: var(--accent-hover);
+}
+
+/* 1. 태블릿 / 작은 노트북 */
+@media (max-width: 1024px) {
+  .notfound-page {
+    padding: 48px 20px;
+  }
+
+  .notfound-card {
+    max-width: 480px;
+    padding: 42px 28px;
+  }
+
+  .notfound-code {
+    font-size: 52px;
+  }
+
+  .notfound-title {
+    font-size: var(--font-xl);
+  }
+}
+
+/* 2. 모바일 */
+@media (max-width: 640px) {
+  .notfound-page {
+    padding: 32px 16px;
+  }
+
+  .notfound-card {
+    padding: 36px 20px;
+  }
+
+  .notfound-code {
+    font-size: 48px;
+  }
+
+  .notfound-title {
+    font-size: var(--font-xl);
+  }
+
+  .notfound-description {
+    font-size: var(--font-sm);
+    margin-bottom: var(--space-4);
+  }
+
+  .notfound-actions {
+    flex-direction: column;
+  }
+
+  .notfound-btn {
+    width: 100%;
+  }
+}
+
+/* 3. 작은 모바일 */
+@media (max-width: 480px) {
+  .notfound-page {
+    padding: 24px 12px;
+  }
+
+  .notfound-card {
+    padding: 28px 16px;
+  }
+
+  .notfound-code {
+    font-size: 40px;
+  }
+
+  .notfound-title {
+    font-size: var(--font-lg);
+  }
+
+  .notfound-description {
+    font-size: var(--font-xs);
+    line-height: 1.55;
+  }
+
+  .notfound-btn {
+    height: 40px;
+    font-size: var(--font-xs);
+  }
+}

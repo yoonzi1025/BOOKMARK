@@ -1,0 +1,147 @@
+.library-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.library-page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.library-page-label {
+  margin: 0;
+  font-size: var(--font-xs);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.library-page-title {
+  margin: 0;
+  font-size: var(--font-2xl);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+}
+
+.library-page-description {
+  margin: 0;
+  font-size: var(--font-sm);
+  line-height: 1.7;
+  color: var(--text-sub);
+}
+
+.library-page-toolbar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.library-sort-box {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+
+.library-sort-select {
+  min-width: 120px;
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  color: var(--text-main);
+  font-size: var(--font-sm);
+  outline: none;
+}
+
+.library-sort-select:focus {
+  border-color: var(--accent-border);
+}
+
+.library-page-body {
+  width: 100%;
+}
+
+/* 1. 태블릿 / 작은 노트북 */
+@media (max-width: 1024px) {
+  .library-page {
+    gap: var(--space-5);
+  }
+
+  .library-page-title {
+    font-size: var(--font-xl);
+  }
+
+  .library-page-description {
+    font-size: var(--font-sm);
+  }
+}
+
+/* 2. 모바일 */
+@media (max-width: 640px) {
+  .library-page {
+    gap: var(--space-4);
+  }
+
+  .library-page-header {
+    gap: 8px;
+  }
+
+  .library-page-label {
+    letter-spacing: 0.14em;
+  }
+
+  .library-page-title {
+    font-size: var(--font-lg);
+  }
+
+  .library-page-description {
+    font-size: var(--font-xs);
+    line-height: 1.6;
+  }
+
+  .library-page-toolbar {
+    gap: var(--space-3);
+  }
+
+  .library-sort-box {
+    justify-content: flex-start;
+  }
+
+  .library-sort-select {
+    min-width: 110px;
+    height: 36px;
+    font-size: var(--font-xs);
+  }
+}
+
+/* 3. 작은 모바일 */
+@media (max-width: 480px) {
+  .library-page {
+    gap: var(--space-3);
+  }
+
+  .library-page-title {
+    font-size: var(--font-md);
+    line-height: 1.4;
+  }
+
+  .library-page-description {
+    font-size: 10px;
+  }
+
+  .library-sort-box {
+    width: 100%;
+  }
+
+  .library-sort-select {
+    width: 100%;
+    min-width: 0;
+  }
+}

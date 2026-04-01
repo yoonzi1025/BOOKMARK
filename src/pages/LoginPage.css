@@ -1,0 +1,153 @@
+.login-page {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-6) var(--space-3);
+  background: var(--bg-page);
+}
+
+.login-card {
+  max-width: 380px;
+  width: 100%;
+  padding: 48px var(--space-6);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.login-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+.login-label {
+  margin-bottom: var(--space-2);
+  font-size: var(--font-sm);
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+}
+
+.login-title {
+  font-size: var(--font-2xl);
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: var(--space-2);
+  line-height: 1.6;
+}
+
+.login-description {
+  font-size: var(--font-md);
+  color: var(--text-sub);
+  margin-bottom: var(--space-5);
+}
+
+.login-google-btn {
+  width: 100%;
+  height: 44px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--accent-name);
+  color: var(--text-light);
+  font-size: var(--font-md);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.login-google-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+  background: var(--primary-hover);
+}
+
+.login-divider {
+  margin: var(--space-4) 0;
+  text-align: center;
+  font-size: var(--font-sm);
+  color: var(--text-muted);
+}
+
+.login-divider span {
+  background: var(--bg-card);
+  padding: 0 10px;
+}
+
+.login-sub {
+  margin-top: var(--space-3);
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+}
+
+/* 1. 태블릿 / 작은 노트북 */
+@media (max-width: 1024px) {
+  .login-page {
+    padding: var(--space-5) var(--space-3);
+  }
+
+  .login-card {
+    max-width: 360px;
+    padding: 42px 28px;
+  }
+}
+
+/* 2. 모바일 */
+@media (max-width: 640px) {
+  .login-page {
+    padding: var(--space-4) var(--space-3);
+  }
+
+  .login-card {
+    max-width: 100%;
+    padding: 36px 24px;
+  }
+
+  .login-title {
+    font-size: var(--font-xl);
+  }
+
+  .login-description {
+    font-size: var(--font-sm);
+    margin-bottom: var(--space-4);
+  }
+
+  .login-google-btn {
+    height: 42px;
+    font-size: var(--font-sm);
+  }
+}
+
+/* 3. 작은 모바일 */
+@media (max-width: 480px) {
+  .login-page {
+    padding: var(--space-3) var(--space-2);
+  }
+
+  .login-card {
+    padding: 30px 18px;
+  }
+
+  .login-label {
+    letter-spacing: 0.08em;
+  }
+
+  .login-title {
+    font-size: var(--font-lg);
+  }
+
+  .login-description {
+    font-size: var(--font-xs);
+  }
+
+  .login-divider {
+    font-size: var(--font-xs);
+  }
+
+  .login-sub {
+    font-size: 10px;
+  }
+}

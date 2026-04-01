@@ -1,11 +1,7 @@
 import ReadingCalendar from "./ReadingCalendar";
 
 const CalendarPage = () => {
-  return (
-    <div>
-      <ReadingCalendar />
-    </div>
-  );
+  return <ReadingCalendar />;
 };
 
 export default CalendarPage;

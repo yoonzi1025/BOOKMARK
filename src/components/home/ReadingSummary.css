@@ -1,0 +1,109 @@
+.reading-summary-section {
+  margin-bottom: var(--space-7);
+}
+
+.reading-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.reading-summary-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  width: 100%;
+  padding: var(--space-4);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  text-align: left;
+  transition: transform var(--transition), box-shadow var(--transition),
+    background-color var(--transition);
+}
+
+.reading-summary-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  background: var(--bg-hover);
+}
+
+.reading-summary-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-bottom: var(--space-1);
+  color: var(--text-sub);
+}
+
+.reading-summary-icon svg,
+.reading-summary-icon img {
+  width: 100%;
+  height: 100%;
+}
+
+.reading-summary-count {
+  font-size: var(--font-xl);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+.reading-summary-description {
+  font-size: var(--font-sm);
+  color: var(--text-sub);
+  line-height: 1.5;
+}
+
+/*  태블릿 */
+@media (max-width: 1024px) {
+  .reading-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* 모바일 */
+@media (max-width: 640px) {
+  .reading-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .reading-summary-card {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4);
+  }
+
+  .reading-summary-icon {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .reading-summary-description {
+    margin-bottom: 0;
+  }
+}
+
+/* 작은 모바일 */
+@media (max-width: 480px) {
+  .reading-summary-section {
+    margin-bottom: var(--space-6);
+  }
+
+  .reading-summary-card {
+    gap: var(--space-2);
+    padding: var(--space-3);
+  }
+
+  .reading-summary-icon {
+    width: 18px;
+    height: 18px;
+  }
+}

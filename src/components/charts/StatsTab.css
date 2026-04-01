@@ -1,0 +1,69 @@
+.stats-wrapper {
+  width: 100%;
+}
+
+.stats-inner {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 0 var(--space-3);
+  display: flex;
+  justify-content: center;
+}
+
+.stats-header {
+  width: 100%;
+  text-align: center;
+  margin-top: var(--space-6);
+}
+
+/* 제목 */
+.stats-title {
+  font-size: var(--font-2xl);
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+/* 설명 */
+.stats-desc {
+  font-size: var(--font-sm); /* ← 기존 xs → sm */
+  color: var(--text-sub); /* ← muted → sub */
+  margin: var(--space-2) 0 var(--space-4);
+  line-height: 1.6;
+}
+
+/* 탭 */
+.stats-tab {
+  display: flex;
+  background: var(--bg-section);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 4px;
+}
+
+/* 버튼 */
+.stats-tab-btn {
+  flex: 1;
+  padding: 12px 0; /* ← 조금 키움 */
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  background: transparent;
+  color: var(--text-muted);
+}
+
+/* active */
+.stats-tab-btn.active {
+  background: var(--bg-card);
+  color: var(--text-main);
+  box-shadow: var(--shadow-sm);
+}
+
+/* hover */
+.stats-tab-btn:not(.active):hover {
+  color: var(--text-main);
+  background: var(--bg-hover);
+}

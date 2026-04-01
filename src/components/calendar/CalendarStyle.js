@@ -3,38 +3,27 @@ import Calendar from "react-calendar";
 import styled from "styled-components";
 
 export const StyledCalendarWrapper = styled.div`
-  width: 445px;
+  max-width: 560px;
+  width: 100%;
+
   display: flex;
   flex-direction: column;
-  align-items: center;
-  position: relative;
-  margin: 50px auto;
-  gap: 5px;
-
-  /* 페이지 타이틀 */
-  .page-title {
-    font-size: 24px;
-    color: #60605a;
-    text-align: center;
-  }
-
-  .page-title p {
-    color: #908a8a;
-    font-size: 12px;
-    margin: 5px 0;
-  }
+  align-items: flex-start;
+  gap: 8px;
+  text-align: left;
+  gap: var(--space-1);
 
   .react-calendar {
-    width: 445px;
-    border: 1px solid #c4c4c4;
-    padding: 3% 5%;
-    background-color: white;
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--space-3);
+    background: var(--bg-card);
   }
 
   .react-calendar__navigation {
     justify-content: center;
-    border-bottom: 1px solid #dfdfdf;
-    position: relative;
+    border-bottom: 1px solid var(--border-light);
   }
 
   .react-calendar__navigation__label__labelText {
@@ -90,16 +79,13 @@ export const StyledCalendarWrapper = styled.div`
 
   /* 날짜 타일 */
   .react-calendar__tile {
-    position: relative;
-    background-color: transparent !important;
-    min-height: 55px;
-    padding-top: 6px;
-    border-radius: 10px;
-    transition: all 0.15s;
+    min-height: 62px;
+    border-radius: var(--radius-md);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    padding-top: 6px;
+    transition: var(--transition);
   }
 
   .react-calendar__tile:hover {
@@ -114,46 +100,69 @@ export const StyledCalendarWrapper = styled.div`
 
   /* 완독한 날 */
   .react-calendar__tile.has-book {
-    background: #fffdf5 !important;
+    background: var(--accent-soft) !important;
   }
 
   .react-calendar__tile.has-book:hover {
-    background: #fffdf5 !important;
-    background-color: #fff3cc !important;
+    background: var(--accent-soft) !important;
     transform: translateY(-1px);
-    box-shadow: 0 3px 10px rgba(255, 193, 7, 0.15);
+    box-shadow: var(--shadow-sm);
     cursor: pointer;
   }
 
   /* 오늘 */
   .react-calendar__tile.is-today abbr {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     width: 26px;
     height: 26px;
     border-radius: 50%;
-    background: #ffc107;
-    color: #fff;
+    background: var(--accent-name);
+    color: var(--text-light);
     font-weight: 700;
-    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   /* 책 표지 */
   .tile-cover-wrapper {
     margin-top: 4px;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    flex: 1;
   }
 
   .tile-cover {
     width: 28px;
     height: 40px;
+    border-radius: var(--radius-sm);
     object-fit: cover;
-    border-radius: 4px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .tile-cover img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .tile-badg {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+
+    background: var(--accent-name);
+    color: #fff;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    border-radius: 999px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .react-calendar__tile--now {
@@ -191,44 +200,41 @@ export const StyledCalendar = styled(Calendar)``;
 
 export const StyledDate = styled.button`
   position: absolute;
-  top: 20%;
+  top: 11%;
   right: 5%;
-  background-color: #ffc107;
-  color: white;
+  background: var(--accent-name);
+  color: var(--text-light);
   width: 90px;
-  text-align: center;
-  line-height: 1.6rem;
-  border-radius: 50px;
-  font-size: 0.8rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--font-xs);
   font-weight: 500;
-  cursor: pointer;
-  z-index: 1;
   border: none;
-  transition: background 0.18s;
+  cursor: pointer;
+  transition: var(--transition);
 
   &:hover {
-    background: #e6a800;
+    background: var(--accent-hover);
   }
 `;
 
 export const StyledCalendarInfo = styled.div`
   display: flex;
-  gap: 16px;
   justify-content: center;
+  gap: var(--space-3);
   width: 100%;
-  background-color: #fff;
-  border: 1px solid #c4c4c4;
-  border-top: 1px solid #f0f0f0;
-  border-radius: 0 0 12px 12px;
-  padding: 10px 0 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-light);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  padding: var(--space-2) 0;
 `;
 
 export const StyledInfoItem = styled.div`
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  color: #aaa;
+  gap: var(--space-1);
+  font-size: var(--font-xs);
+  color: var(--text-muted);
 `;
 
 export const StyledInfoDot = styled.div`

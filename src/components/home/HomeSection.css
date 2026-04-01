@@ -1,0 +1,68 @@
+.home-section {
+  padding-top: var(--space-7);
+  border-top: 1px solid var(--border-light);
+}
+
+.home-section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.home-section-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.home-section-label {
+  margin: 0;
+  font-size: var(--font-xs);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.home-section-title {
+  margin: 0;
+  font-size: var(--font-xl);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text-main);
+}
+
+.home-section-description {
+  margin: 0;
+  font-size: var(--font-sm);
+  line-height: 1.6;
+  color: var(--text-sub);
+}
+
+.home-section-more {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.home-section-content {
+  width: 100%;
+}
+
+/* 태블릿 */
+@media (max-width: 1024px) {
+  .home-section {
+    padding-top: var(--space-6);
+  }
+}
+
+/* 모바일 */
+@media (max-width: 640px) {
+  .home-section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+}

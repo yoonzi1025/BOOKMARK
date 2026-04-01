@@ -1,127 +1,261 @@
 .navbar {
   width: 100%;
-  height: 64px;
-  border-bottom: 1px solid #ededed;
-  background-color: #fff;
+  min-height: 64px;
+  border-bottom: 1px solid var(--border-light);
+  background: var(--bg-card);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.top-bar {
-  max-width: 1200px;
-  height: 100%;
+.navbar-container {
+  width: 100%;
+  max-width: var(--container);
+  min-height: 64px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 var(--space-4);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-4);
+}
 
+/* LEFT */
+.navbar-left {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: var(--space-4);
+  min-width: 0;
 }
 
-.nav-logo {
-  font-weight: 900;
-  letter-spacing: -0.5px;
-  font-size: 28px;
-  color: #ffc107;
+.navbar-logo {
+  flex-shrink: 0;
+  font-size: var(--font-xl);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
   cursor: pointer;
-  user-select: none;
+  transition: color var(--transition);
 }
 
-.nav-title {
+.navbar-logo:hover {
+  color: var(--accent-name);
+}
+
+/* MENU */
+.navbar-menu {
   display: flex;
   align-items: center;
-  gap: 18px;
-  /*margin-left: 10px;*/
+  gap: var(--space-4);
 }
 
-.nav-item {
-  background: none;
-  border: none;
-  font-size: 15px;
-  font-weight: 600;
-  color: #222;
-  cursor: pointer;
-  padding: 10px 6px;
-  border-radius: 8px;
-  transition: color 0.18s, border-bottom 0.18s;
+.navbar-item {
   position: relative;
+  padding: 8px 2px;
+  border: none;
+  background: transparent;
+  color: var(--text-sub);
+  font-size: var(--font-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: color var(--transition);
 }
 
-.nav-item:hover {
-  background: none;
-  color: #ffc107;
+.navbar-item:hover,
+.navbar-item.active {
+  color: var(--accent-name);
+  font-weight: 600;
 }
 
-.nav-item::after {
+.navbar-item.active::after,
+.navbar-item:hover::after {
   content: "";
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%) scaleX(0);
-  width: 80%;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
   height: 2px;
-  background-color: #ffc107;
-  border-radius: 2px;
-  transition: transform 0.22s ease;
+  background: var(--accent-name);
+  border-radius: var(--radius-pill);
 }
 
-.nav-item:hover::after {
-  transform: translateX(-50%) scaleX(1);
+/* SEARCH */
+.navbar-center {
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+  width: 100%;
 }
 
-.nav-item.is-active {
-  color: #ffc107;
-  font-weight: 700;
-}
-
-.nav-item.is-active::after {
-  transform: translateX(-50%) scaleX(1);
-}
-
-.search {
-  margin-left: auto;
-  width: min(520px, 45vw);
-  height: 40px;
-  /*border: 1px solid #e6e6e6;*/
-  border: 1px solid #ffc107;
-  border-radius: 999px;
-  background: transparent;
-
+.navbar-search {
+  width: min(420px, 100%);
+  min-height: 40px;
+  padding: 0 var(--space-3);
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 0 14px;
+  gap: var(--space-2);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-pill);
+  background: var(--bg-card);
+  transition: border-color var(--transition), background-color var(--transition),
+    box-shadow var(--transition);
 }
 
-.search-icon {
-  width: 18px;
-  height: 18px;
-  opacity: 0.7;
+.navbar-search:focus-within {
+  border-color: var(--accent-border);
+  background: var(--bg-section);
+  box-shadow: 0 0 0 4px var(--accent-soft);
 }
 
-.search input {
-  width: 100%;
+.navbar-search input {
+  flex: 1;
+  min-width: 0;
   border: none;
   outline: none;
-
   background: transparent;
-  font-size: 14px;
-  color: #111;
+  color: var(--text-main);
+  font-size: var(--font-sm);
 }
 
-.search input::placeholder {
-  color: #8b8b8b;
+.navbar-search input::placeholder {
+  color: var(--text-muted);
 }
 
-/* 모바일 */
-@media (max-width: 768px) {
-  .top-bar {
-    padding: 0 14px;
+.navbar-search-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-sub);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.navbar-search-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-main);
+}
+
+.navbar-search-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* RIGHT */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.navbar-login-btn {
+  height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-pill);
+  background: var(--bg-card);
+  color: var(--text-main);
+  font-size: var(--font-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition), color var(--transition),
+    border-color var(--transition);
+}
+
+.navbar-login-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-main);
+}
+
+.navbar-user-box {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.navbar-user-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  border: none;
+  background: transparent;
+}
+
+.navbar-user-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--text-sub);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light);
+  font-size: var(--font-sm);
+}
+
+.navbar-user-avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.navbar-user-name {
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* 1. 태블릿 */
+@media (max-width: 1024px) {
+  .navbar-search {
+    width: 100%;
+  }
+}
+
+/* 2. 모바일 */
+@media (max-width: 640px) {
+  .navbar-container {
+    grid-template-columns: auto 1fr auto;
   }
 
-  .nav-title {
+  .navbar-menu {
     display: none;
   }
 
-  .search {
-    width: 60vw;
+  .navbar-center {
+    width: 100%;
+  }
+
+  .navbar-search {
+    width: 100%;
+  }
+}
+
+/* 3. 작은 모바일 */
+@media (max-width: 480px) {
+  .navbar-container {
+    padding: 0 var(--space-3);
+    gap: var(--space-2);
+  }
+
+  .navbar-search {
+    min-height: 36px;
+    padding: 0 var(--space-2);
+  }
+
+  .navbar-login-btn {
+    height: 34px;
+    padding: 0 12px;
+  }
+
+  .navbar-user-name {
+    display: none;
   }
 }

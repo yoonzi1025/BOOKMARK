@@ -8,10 +8,9 @@ import {
   StyledInfoDot,
 } from "./CalendarStyle";
 import moment from "moment";
-import { BooksStateContext } from "../../context/books/BooksProvider";
 import { RecordStateContext } from "../../context/records/RecordProvider";
 import CalendarModal from "./CalendarModal";
-import { getDayBooks } from "../../utils/calendar-utils";
+import { getDayBooks } from "../../utils/calendarUtils";
 
 const ReadingCalendar = () => {
   const today = new Date();
@@ -20,7 +19,6 @@ const ReadingCalendar = () => {
   const [open, setOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
 
-  const books = useContext(BooksStateContext);
   const records = useContext(RecordStateContext);
 
   // value = 클릭한 날짜
@@ -30,11 +28,11 @@ const ReadingCalendar = () => {
     setOpen(true);
   };
 
-  const handleTodayClick = () => {
-    const today = new Date();
-    setActiveStartDate(today);
-    setDate(today);
-  };
+  // const handleTodayClick = () => {
+  //   const today = new Date();
+  //   setActiveStartDate(today);
+  //   setDate(today);
+  // };
 
   const handleClose = () => {
     setOpen(false);
@@ -42,12 +40,6 @@ const ReadingCalendar = () => {
 
   return (
     <StyledCalendarWrapper>
-      <div className="page-wrap">
-        <div className="page-title">
-          <h1>Reading Board</h1>
-          <p>날짜를 클릭해 기록 된 책을 확인하세요.</p>
-        </div>
-      </div>
       <StyledCalendar
         value={date}
         onChange={handleDateChange}
@@ -67,7 +59,8 @@ const ReadingCalendar = () => {
         /* 날짜 칸에 클래스 주기 (has-book, is-today) */
         tileClassName={({ date: tileDate, view }) => {
           if (view !== "month") return "";
-          const dayBooks = getDayBooks({ books, records, date: tileDate });
+
+          const dayBooks = getDayBooks({ records, date: tileDate });
 
           const isToday =
             tileDate.getFullYear() === today.getFullYear() &&
@@ -85,39 +78,37 @@ const ReadingCalendar = () => {
         tileContent={({ date: tileDate, view }) => {
           if (view !== "month") return null;
 
-          const dayBooks = getDayBooks({ books, records, date: tileDate });
-
+          const dayBooks = getDayBooks({ records, date: tileDate });
           if (dayBooks.length === 0) return null;
 
           return (
-            <>
-              <div className="tile-cover-wrapper">
-                <img
-                  className="tile-cover"
-                  src={dayBooks[0].cover}
-                  alt={dayBooks[0].title}
-                />
+            <div className="tile-cover-wrapper">
+              <div className="tile-cover">
+                <img src={dayBooks[0].cover} alt={dayBooks[0].title} />
               </div>
-            </>
+              <div className="tile-badge">{dayBooks.length}</div>
+            </div>
           );
         }}
       />
       <StyledCalendarInfo>
         <StyledInfoItem>
-          <StyledInfoDot
-            style={{ background: "#fff8e1", border: "1.5px solid #ffc107" }}
-          />
+          <StyledInfoDot style={{ border: "1.5px solid #2f3e9e" }} />
           완독한 날
         </StyledInfoItem>
         <StyledInfoItem>
-          <StyledInfoDot style={{ background: "#ffc107" }} />
+          <StyledInfoDot style={{ background: "#2f3e9e" }} />
           오늘
         </StyledInfoItem>
       </StyledCalendarInfo>
-
-      <StyledDate onClick={handleTodayClick}>Today</StyledDate>
+      {/* 
+      <StyledDate onClick={handleTodayClick}>Today</StyledDate> */}
       {open && selectedDate && (
-        <CalendarModal date={selectedDate} onClose={handleClose} />
+        <CalendarModal
+          date={selectedDate}
+          dayBooks={getDayBooks({ records, date: selectedDate })}
+          onClose={handleClose}
+        />
       )}
     </StyledCalendarWrapper>
   );

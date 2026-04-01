@@ -1,0 +1,138 @@
+:root {
+  /* ───────────── COLOR ───────────── */
+  /* background */
+  --bg-page: #ffffff;
+  --bg-section: #f9f9f9;
+  --bg-card: #ffffff;
+  --bg-hover: #f5f5f5;
+
+  /* border */
+  --border-color: #e5e5e5;
+  --border-light: #f0f0f0;
+
+  /* text */
+  --text-main: #111111;
+  --text-sub: #666666;
+  --text-muted: #999999;
+  --text-light: #ffffff;
+
+  /* accent */
+  --accent-name: #2f3e9e;
+  --accent-hover: #25327f;
+  --accent-soft: rgba(47, 62, 158, 0.12);
+  --accent-border: rgba(47, 62, 158, 0.22);
+
+  /* primary */
+  --primary: #111111;
+  --primary-hover: #333333;
+  --primary-inverse: #ffffff;
+
+  /* ───────────── layout ───────────── */
+  --container: 1200px;
+  --container-sm: 1080px;
+
+  /* ───────────── radius ───────────── */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  /* ───────────── spacing ───────────── */
+  --space-1: 8px;
+  --space-2: 12px;
+  --space-3: 16px;
+  --space-4: 20px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 40px;
+
+  /* ───────────── shadow ───────────── */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.06);
+
+  /* ───────────── transition ───────────── */
+  --transition: 0.2s ease;
+
+  /* ───────────── typography ───────────── */
+  --font-xs: 12px;
+  --font-sm: 13px;
+  --font-md: 14px;
+  --font-lg: 16px;
+  --font-xl: 20px;
+  --font-2xl: 28px;
+  --font-3xl: 32px;
+
+  /* ───────────── MODAL ───────────── */
+  --overlay-bg: rgba(17, 17, 17, 0.48);
+  --overlay-blur: 6px;
+}
+
+/* ───────────── 반응형 ───────────── */
+/*  태블릿  */
+@media (max-width: 1024px) {
+  :root {
+    --container-padding: 24px;
+    --section-gap: 32px;
+    --card-width: 180px;
+
+    --space-3: 14px;
+    --space-4: 18px;
+    --space-5: 22px;
+    --space-6: 28px;
+    --space-7: 36px;
+
+    --font-xs: 11px;
+    --font-sm: 12px;
+    --font-md: 13px;
+    --font-lg: 15px;
+    --font-xl: 18px;
+    --font-2xl: 24px;
+    --font-3xl: 28px;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 640px) {
+  :root {
+    --container-padding: 16px;
+    --section-gap: 24px;
+    --card-width: 140px;
+
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-7: 28px;
+
+    --font-xs: 10px;
+    --font-sm: 11px;
+    --font-md: 12px;
+    --font-lg: 14px;
+    --font-xl: 16px;
+    --font-2xl: 22px;
+    --font-3xl: 26px;
+  }
+}
+
+/* 작은 모바일 */
+@media (max-width: 480px) {
+  :root {
+    --container-padding: 12px;
+    --section-gap: 20px;
+    --card-width: 124px;
+
+    --space-3: 10px;
+    --space-4: 14px;
+    --space-5: 18px;
+    --space-6: 22px;
+    --space-7: 24px;
+
+    --font-xs: 10px;
+    --font-sm: 11px;
+    --font-md: 12px;
+    --font-lg: 13px;
+    --font-xl: 15px;
+    --font-2xl: 20px;
+    --font-3xl: 24px;
+  }
+}

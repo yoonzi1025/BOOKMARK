@@ -18,19 +18,56 @@ ChartJS.register(
   Legend
 );
 
-const MonthlyReadingChart = ({ data }) => {
+const MonthlyReadingChart = ({ chartData }) => {
+  const data = {
+    ...chartData,
+    datasets: chartData.datasets.map((dataset) => ({
+      ...dataset,
+      backgroundColor: "#d9def5",
+      borderRadius: 8,
+      maxBarThickness: 28,
+    })),
+  };
+
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
-      legend: {
-        position: "top",
+      legend: { display: false },
+      title: { display: false },
+      tooltip: {
+        backgroundColor: "#111111",
+        titleColor: "#999999",
+        bodyColor: "#ffffff",
+        bodyFont: { weight: "700" },
+        padding: 10,
+        cornerRadius: 10,
+        callbacks: {
+          label: (ctx) => `${ctx.parsed.y}권`,
+        },
       },
-      title: {
-        display: true,
-        text: "월별 완독 수",
+    },
+    scales: {
+      x: {
+        grid: { display: false },
+        border: { display: false },
+        ticks: {
+          color: "#666666",
+          font: { size: 11, weight: "600" },
+        },
+      },
+      y: {
+        grid: { color: "#f0f0f0" },
+        border: { display: false },
+        ticks: {
+          color: "#666666",
+          font: { size: 11, weight: "600" },
+          stepSize: 1,
+        },
       },
     },
   };
+
   return <Bar options={options} data={data} />;
 };
 

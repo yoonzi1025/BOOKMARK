@@ -1,0 +1,246 @@
+.record-review {
+  margin-top: var(--space-6);
+  padding: var(--space-5) 0;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.record-review-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.record-review-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.record-review-title {
+  margin: 0;
+  font-size: var(--font-xl);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.record-review-date {
+  margin: 0;
+  font-size: var(--font-sm);
+  font-weight: 500;
+  color: var(--text-muted);
+  line-height: 1;
+}
+
+.record-review-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+.record-review-btn {
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-size: var(--font-xs);
+  font-weight: 600;
+  color: var(--text-sub);
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.record-review-btn:hover {
+  color: var(--text-main);
+}
+
+.record-review-btn.is-delete:hover {
+  color: #c25555;
+}
+
+.record-review-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.record-review-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.record-review-period {
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+}
+
+.record-review-rating {
+  display: inline-flex;
+  align-items: center;
+  transform: scale(0.8);
+  transform-origin: left center;
+}
+
+.record-review-body {
+  padding-left: 0;
+}
+
+.record-review-comment {
+  margin: 0;
+  font-size: var(--font-sm);
+  line-height: 1.8;
+  color: var(--text-sub);
+  white-space: pre-line;
+}
+
+.record-review-placeholder {
+  margin: 0;
+  font-size: var(--font-sm);
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+/* 기록 없을 때 */
+.record-review-empty {
+  padding-bottom: var(--space-6);
+}
+
+.record-empty-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-6) 0 var(--space-2);
+  text-align: center;
+}
+
+.record-empty-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  font-size: 22px;
+}
+
+.record-empty-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.record-empty-title {
+  margin: 0;
+  font-size: var(--font-md);
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.record-empty-description {
+  margin: 0;
+  font-size: var(--font-sm);
+  line-height: 1.7;
+  color: var(--text-sub);
+}
+
+.record-empty-btn {
+  margin-top: var(--space-2);
+}
+
+/* 1. 태블릿 / 작은 노트북 */
+@media (max-width: 1024px) {
+  .record-review-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .record-review-actions {
+    gap: var(--space-2);
+  }
+
+  .record-review-meta {
+    align-items: flex-start;
+  }
+}
+
+/* 2. 모바일 */
+@media (max-width: 640px) {
+  .record-review {
+    margin-top: var(--space-5);
+    padding: var(--space-4) 0;
+  }
+
+  .record-review-heading {
+    gap: 8px;
+  }
+
+  .record-review-title {
+    line-height: 1.3;
+  }
+
+  .record-review-row {
+    gap: 8px;
+  }
+
+  .record-review-rating {
+    transform: scale(0.72);
+  }
+
+  .record-empty-avatar {
+    width: 46px;
+    height: 46px;
+    font-size: 20px;
+  }
+
+  .record-empty-description br {
+    display: none;
+  }
+}
+
+/* 3. 작은 모바일 */
+@media (max-width: 480px) {
+  .record-review {
+    margin-top: var(--space-4);
+    padding: var(--space-3) 0;
+  }
+
+  .record-review-header {
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+
+  .record-review-actions {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .record-review-meta {
+    margin-bottom: var(--space-3);
+  }
+
+  .record-review-row {
+    align-items: flex-start;
+  }
+
+  .record-review-rating {
+    transform: scale(0.66);
+  }
+
+  .record-empty-box {
+    gap: var(--space-3);
+    padding: var(--space-5) 0 var(--space-2);
+  }
+
+  .record-empty-avatar {
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+  }
+}
