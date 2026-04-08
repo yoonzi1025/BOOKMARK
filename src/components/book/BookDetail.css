@@ -166,16 +166,24 @@
 }
 
 /* 2. 모바일 */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .book-detail-main {
-    flex-direction: column;
+    display: flex;
     gap: var(--space-4);
     padding: var(--space-4);
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
   }
 
   .book-detail-cover {
     width: 140px;
     height: 200px;
+  }
+
+  .book-detail-content {
+    gap: var(--space-4);
   }
 
   .book-detail-actions {
@@ -196,29 +204,45 @@
   }
 
   .book-detail-description {
-    line-height: 1.7;
+    font-size: var(--font-sm);
+    line-height: 1.6;
+    color: var(--text-sub);
+    word-break: keep-all;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
 
 /* 3. 작은 모바일 */
 @media (max-width: 480px) {
   .book-detail-main {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-3);
     padding: var(--space-3);
   }
 
   .book-detail-cover {
+    flex: 0 0 120px;
     width: 120px;
     height: 170px;
   }
 
+  .book-detail-content {
+    flex: 1;
+    min-width: 0;
+    gap: var(--space-3);
+  }
+
   .book-detail-actions {
-    flex-direction: column;
     flex-wrap: nowrap;
   }
 
   .book-detail-action-btn {
-    width: 100%;
-    flex: none;
+    flex: 1;
   }
 
   .book-detail-title {
@@ -227,5 +251,16 @@
 
   .book-detail-author {
     font-size: var(--font-xs);
+  }
+
+  .book-detail-description {
+    font-size: var(--font-xs);
+    line-height: 1.6;
+    color: var(--text-sub);
+    word-break: keep-all;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }

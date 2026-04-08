@@ -45,7 +45,7 @@
   color: var(--text-sub);
 }
 
-/* ───────── summary ───────── */
+/*  summary  */
 .stats-summary {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -84,7 +84,7 @@
   margin-left: 4px;
 }
 
-/* ───────── chart layout ───────── */
+/*  chart layout  */
 .stats-chart-wrapper {
   width: 100%;
   display: grid;
@@ -103,7 +103,7 @@
   align-self: stretch;
 }
 
-/* ───────── card ───────── */
+/*  card  */
 .stats-chart-card {
   background: var(--bg-card);
   border: 1px solid var(--border-light);
@@ -120,14 +120,14 @@
   color: var(--text-main);
 }
 
-/* ───────── chart box ───────── */
+/*  chart box  */
 .stats-chart-box {
   position: relative;
   width: 100%;
   height: 220px;
 }
 
-/* ───────── pie ───────── */
+/*  pie  */
 .stats-pie-card {
   min-height: 289px;
   display: flex;
@@ -158,7 +158,7 @@
   height: 126px !important;
 }
 
-/* ───────── legend ───────── */
+/*  legend  */
 .stats-legend {
   display: flex;
   flex-direction: column;
@@ -186,7 +186,7 @@
   white-space: nowrap;
 }
 
-/* ───────── calendar ───────── */
+/*  calendar  */
 .stats-calendar-section {
   width: 100%;
   display: flex;
@@ -244,6 +244,7 @@
 
   .stats-pie-layout {
     justify-content: center;
+    gap: var(--space-4);
   }
 
   .stats-page-title,
@@ -252,12 +253,26 @@
   }
 
   .stats-chart-card {
-    padding: var(--space-4);
+    padding: var(--space-3);
+  }
+
+  .stats-chart-box {
+    height: 220px;
+  }
+
+  .stats-pie-chart-box {
+    width: 118px;
+    height: 118px;
+  }
+
+  .stats-pie-chart-box canvas {
+    width: 118px !important;
+    height: 118px !important;
   }
 }
 
 /* 2. 모바일 */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .stats-page-container {
     padding: 0 var(--space-2);
   }
@@ -287,17 +302,13 @@
     line-height: 1.6;
   }
 
-  .stats-summary {
-    grid-template-columns: 1fr;
-  }
-
   .stats-box {
-    min-height: 96px;
+    min-height: 88px;
     padding: var(--space-3);
   }
 
   .stats-num {
-    font-size: 32px;
+    font-size: 28px;
   }
 
   .stats-chart-card {
@@ -305,40 +316,42 @@
   }
 
   .stats-chart-title {
-    margin: var(--space-1) 0 var(--space-3) 0;
+    margin: var(--space-1) 0 var(--space-2) 0;
     font-size: var(--font-sm);
   }
 
   .stats-chart-box {
-    height: 220px;
+    height: 180px;
   }
 
   .stats-pie-layout {
     flex-direction: column;
-    gap: var(--space-4);
+    gap: var(--space-3);
   }
 
   .stats-pie-chart-box {
-    width: 140px;
-    height: 140px;
+    width: 112px;
+    height: 112px;
   }
 
   .stats-pie-chart-box canvas {
-    width: 140px !important;
-    height: 140px !important;
+    width: 112px !important;
+    height: 112px !important;
   }
 
   .stats-legend {
     min-width: 0;
     align-items: center;
+    gap: 6px;
   }
 
   .stats-calendar-section {
     gap: var(--space-3);
+    padding-top: var(--space-1);
   }
 
   .stats-calendar-header {
-    margin: var(--space-5) 0 0 0;
+    margin: var(--space-4) 0 0 0;
   }
 }
 
@@ -374,8 +387,8 @@
   }
 
   .stats-box {
-    min-height: 88px;
-    padding: var(--space-2);
+    min-height: 80px;
+    padding: 10px;
   }
 
   .stats-label {
@@ -383,7 +396,7 @@
   }
 
   .stats-num {
-    font-size: 28px;
+    font-size: 24px;
   }
 
   .stats-unit {
@@ -391,7 +404,7 @@
   }
 
   .stats-chart-card {
-    padding: var(--space-2);
+    padding: 10px;
   }
 
   .stats-chart-title {
@@ -400,25 +413,25 @@
   }
 
   .stats-chart-box {
-    height: 200px;
+    height: 160px;
   }
 
   .stats-pie-layout {
-    gap: var(--space-3);
+    gap: var(--space-2);
   }
 
   .stats-pie-chart-box {
-    width: 126px;
-    height: 126px;
+    width: 96px;
+    height: 96px;
   }
 
   .stats-pie-chart-box canvas {
-    width: 126px !important;
-    height: 126px !important;
+    width: 96px !important;
+    height: 96px !important;
   }
 
   .stats-legend {
-    gap: 6px;
+    gap: 5px;
   }
 
   .stats-legend-item {
@@ -427,11 +440,15 @@
   }
 
   .stats-legend-dot {
-    width: 7px;
-    height: 7px;
+    width: 6px;
+    height: 6px;
+  }
+
+  .stats-calendar-section {
+    gap: var(--space-2);
   }
 
   .stats-calendar-header {
-    margin: var(--space-4) 0 0 0;
+    margin: var(--space-3) 0 0 0;
   }
 }

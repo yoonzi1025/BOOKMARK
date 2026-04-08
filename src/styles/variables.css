@@ -92,7 +92,7 @@
 }
 
 /* 모바일 */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   :root {
     --container-padding: 16px;
     --section-gap: 24px;

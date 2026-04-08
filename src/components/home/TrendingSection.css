@@ -87,7 +87,7 @@
 }
 
 /* 2. 모바일 */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .trending-section-item {
     grid-template-columns: 20px 50px minmax(0, 1fr);
     gap: var(--space-2);

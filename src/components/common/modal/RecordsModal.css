@@ -1,4 +1,4 @@
-/* ───────────── Overlay ───────────── */
+/*  Overlay  */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -12,10 +12,10 @@
   padding: var(--space-3);
 }
 
-/* ───────────── Modal Box ───────────── */
+/*  Modal Box  */
 .modal {
   width: 100%;
-  max-width: 520px;
+  max-width: 480px;
   max-height: 90vh;
   overflow-y: auto;
   background: var(--bg-card);
@@ -29,7 +29,7 @@
   display: none;
 }
 
-/* ───────────── Header ───────────── */
+/*  Header  */
 .modal-header {
   display: flex;
   align-items: center;
@@ -60,7 +60,7 @@
   color: var(--text-main);
 }
 
-/* ───────────── Section ───────────── */
+/*  Section  */
 .modal-section {
   display: flex;
   flex-direction: column;
@@ -75,7 +75,7 @@
   color: var(--text-main);
 }
 
-/* ───────────── Status ───────────── */
+/*  Status  */
 .status-section {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -135,7 +135,7 @@
   color: var(--accent-name);
 }
 
-/* ───────────── Date ───────────── */
+/*  Date  */
 .modal-date-row {
   display: flex;
   align-items: flex-start;
@@ -194,7 +194,7 @@
   margin-top: 20px;
 }
 
-/* ───────────── Rating ───────────── */
+/*  Rating  */
 .rating-section {
   display: flex;
   flex-direction: column;
@@ -213,7 +213,7 @@
   color: var(--text-main);
 }
 
-/* ───────────── Comment ───────────── */
+/*  Comment  */
 .comment-header {
   display: flex;
   flex-direction: column;
@@ -245,7 +245,7 @@
   color: var(--text-muted);
 }
 
-/* ───────────── Buttons ───────────── */
+/*  Buttons  */
 .modal-action-group {
   display: flex;
   gap: var(--space-2);
@@ -286,7 +286,7 @@
   border-color: var(--accent-hover);
 }
 
-/* ───────────── Error ───────────── */
+/*  Error  */
 .input-error {
   border: 1px solid #d96b6b !important;
 }
@@ -298,18 +298,9 @@
 }
 
 /* 태블릿 */
-@media (max-width: 1024px) {
-  .modal {
-    max-width: 100%;
-  }
-
-  .status-section {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 
 /* 모바일 */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .modal-overlay {
     padding: var(--space-2);
   }
@@ -326,10 +317,6 @@
     font-size: var(--font-lg);
   }
 
-  .modal-date-row {
-    flex-direction: column;
-  }
-
   .modal-date-divider {
     display: none;
   }
@@ -343,10 +330,6 @@
     min-height: 90px;
   }
 
-  .modal-action-group {
-    flex-direction: column;
-  }
-
   .modal-cancel-btn,
   .modal-save-btn {
     height: 44px;
@@ -356,21 +339,54 @@
 /* 작은 모바일 */
 @media (max-width: 480px) {
   .status-section {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-2);
   }
 
   .status-option {
-    flex-direction: row;
-    justify-content: flex-start;
-    gap: var(--space-2);
+    min-height: 64px;
+    padding: 8px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
   }
 
   .status-option-label,
   .status-option-sub {
-    text-align: left;
+    text-align: center;
+  }
+
+  .modal-overlay {
+    padding: 12px;
+  }
+
+  .modal {
+    width: 100%;
+    max-width: 420px;
+    border-radius: var(--radius-md);
+  }
+
+  .modal-section {
+    padding: var(--space-2);
+  }
+
+  .modal-header {
+    padding: var(--space-3) var(--space-3) var(--space-2);
   }
 
   .modal-title {
     font-size: var(--font-md);
+  }
+
+  .modal-section {
+    padding: var(--space-2);
+  }
+
+  .modal-textarea {
+    min-height: 80px;
+  }
+
+  .modal-footer {
+    gap: 10px;
   }
 }

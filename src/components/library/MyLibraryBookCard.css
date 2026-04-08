@@ -50,28 +50,28 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
+  gap: 6px;
 }
 
 .my-library-book-card-title {
   margin: 0;
   font-size: var(--font-lg);
   font-weight: 700;
-  line-height: 1.45;
+  line-height: 1.4;
   color: var(--text-main);
 }
 
 .my-library-book-card-author {
   margin: 0;
   font-size: var(--font-sm);
-  line-height: 1.5;
+  line-height: 1.4;
   color: var(--text-muted);
 }
 
 .my-library-book-card-description {
-  margin: 4px 0 0;
+  margin: 2px 0 0;
   font-size: var(--font-sm);
-  line-height: 1.6;
+  line-height: 1.5;
   color: var(--text-sub);
   word-break: keep-all;
   overflow: hidden;
@@ -81,13 +81,13 @@
 }
 
 .my-library-book-card-side {
-  width: 110px;
+  width: 96px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .my-library-book-card-more {
@@ -113,18 +113,27 @@
 
 /* 1. 태블릿 */
 @media (max-width: 1024px) {
+  .my-library-book-card {
+    padding: var(--space-3);
+    gap: var(--space-3);
+  }
+
   .my-library-book-card-cover {
-    width: 80px;
-    height: 110px;
+    width: 76px;
+    height: 108px;
+  }
+
+  .my-library-book-card-title {
+    font-size: var(--font-md);
   }
 
   .my-library-book-card-side {
-    width: 96px;
+    width: 88px;
   }
 }
 
 /* 2. 모바일 */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .my-library-book-card {
     padding: var(--space-3);
     gap: var(--space-3);
@@ -132,14 +141,34 @@
   }
 
   .my-library-book-card-cover {
-    width: 58px;
-    height: 84px;
+    width: 64px;
+    height: 92px;
   }
 
   .my-library-book-card-body {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-2);
+  }
+
+  .my-library-book-card-main {
+    gap: 4px;
+  }
+
+  .my-library-book-card-title {
+    font-size: var(--font-sm);
+    line-height: 1.35;
+  }
+
+  .my-library-book-card-author {
+    font-size: var(--font-xs);
+  }
+
+  .my-library-book-card-description {
+    margin-top: 0;
+    font-size: var(--font-xs);
+    line-height: 1.45;
+    -webkit-line-clamp: 2;
   }
 
   .my-library-book-card-side {
@@ -153,16 +182,27 @@
 
 /* 3. 작은 모바일 */
 @media (max-width: 480px) {
+  .my-library-book-card {
+    padding: 12px;
+    gap: 12px;
+    border-radius: 16px;
+  }
+
   .my-library-book-card-cover {
-    width: 50px;
-    height: 72px;
+    width: 56px;
+    height: 80px;
   }
 
   .my-library-book-card-title {
-    font-size: var(--font-md);
+    font-size: var(--font-sm);
+  }
+
+  .my-library-book-card-description {
+    -webkit-line-clamp: 1;
   }
 
   .my-library-book-card-side {
     flex-wrap: wrap;
+    gap: 8px;
   }
 }

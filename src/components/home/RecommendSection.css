@@ -55,7 +55,6 @@
   color: var(--text-muted);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -68,7 +67,6 @@
   font-weight: 700;
   color: var(--text-main);
   line-height: 1.5;
-
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -80,7 +78,6 @@
   min-height: 18px;
   font-size: var(--font-xs);
   color: var(--text-sub);
-
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -92,7 +89,6 @@
   font-size: var(--font-xs);
   color: var(--text-muted);
   line-height: 1.5;
-
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -112,7 +108,6 @@
   font-weight: 600;
   line-height: 1;
   max-width: 100%;
-
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -136,18 +131,18 @@
 }
 
 /* 2. 모바일 */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .recommend-section-container {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-3);
   }
 
   .recommend-section-cover {
-    aspect-ratio: 0.6 / 1;
+    aspect-ratio: 0.63 / 1;
   }
 
   .recommend-section-info {
-    min-height: 96px;
+    min-height: 88px;
     gap: 2px;
   }
 
@@ -163,22 +158,23 @@
 
   .recommend-section-description {
     min-height: 30px;
+    -webkit-line-clamp: 2;
   }
 }
 
 /* 3. 작은 모바일 */
 @media (max-width: 480px) {
   .recommend-section-container {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--space-2);
   }
 
   .recommend-section-cover {
-    aspect-ratio: 0.58 / 1;
+    aspect-ratio: 0.7 / 1;
   }
 
   .recommend-section-info {
-    min-height: 88px;
+    min-height: 82px;
     gap: 2px;
   }
 
@@ -188,6 +184,7 @@
   }
 
   .recommend-section-author {
+    min-height: 14px;
     font-size: 11px;
   }
 

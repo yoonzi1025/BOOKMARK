@@ -64,18 +64,17 @@
 /*  태블릿 */
 @media (max-width: 1024px) {
   .reading-summary {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 /* 모바일 */
 @media (max-width: 640px) {
   .reading-summary {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .reading-summary-card {
-    flex-direction: row;
     align-items: center;
     gap: var(--space-3);
     padding: var(--space-4);
