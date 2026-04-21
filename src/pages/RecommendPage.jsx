@@ -8,6 +8,7 @@ import {
   fetchRecommendBooksByCategory,
   fetchTrendingBooks,
 } from "../api/bookApi";
+import SkeletonCard from "../components/common/skeleton/SkeletonCard";
 
 const RecommendPage = () => {
   const nav = useNavigate();
@@ -61,7 +62,21 @@ const RecommendPage = () => {
   }, [records]);
 
   if (loading) {
-    return <div className="book-grid-page-state">추천 책을 불러오는 중...</div>;
+    return (
+      <section className="book-grid-page">
+        <div className="book-grid-page-header">
+          <p className="book-grid-page-label">RECOMMEND</p>
+          <h1 className="book-grid-page-title">내 취향 기반 추천</h1>
+          <div className="book-grid-page-state">추천 책을 불러오는 중...</div>
+        </div>
+
+        <div className="book-grid">
+          {Array.from({ length: 8 }).map((_, index) => (
+            <SkeletonCard key={index} />
+          ))}
+        </div>
+      </section>
+    );
   }
 
   if (!recommendBooks.length) {

@@ -94,6 +94,7 @@ const MyLibraryPage = () => {
 
           <div className="library-sort-box">
             <select
+              className="library-sort-select"
               name="library-sort-select"
               id="library-sort-select"
               value={sortType}

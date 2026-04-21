@@ -1,0 +1,56 @@
+.skeleton-cover {
+  width: 100%;
+  aspect-ratio: 3 / 4.25;
+  border-radius: var(--radius-lg);
+  background: #ececec;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 텍스트 */
+.skeleton-line {
+  height: 10px;
+  border-radius: 6px;
+  background: #ececec;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-title {
+  width: 80%;
+  height: 14px;
+  margin-bottom: 6px;
+}
+
+.skeleton-author {
+  width: 60%;
+  margin-bottom: 4px;
+}
+
+.skeleton-category {
+  width: 40%;
+}
+
+/* 애니메이션 */
+.skeleton-cover::after,
+.skeleton-line::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.7),
+    transparent
+  );
+  animation: skeleton 1.2s infinite;
+}
+
+@keyframes skeleton {
+  100% {
+    left: 100%;
+  }
+}

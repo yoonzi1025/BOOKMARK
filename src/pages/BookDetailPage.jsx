@@ -6,6 +6,7 @@ import {
   RecordDispatchContext,
   RecordStateContext,
 } from "../context/records/RecordProvider";
+import Loading from "../components/common/loading/Loading";
 
 const BookDetailPage = () => {
   const { isbn13 } = useParams();
@@ -159,7 +160,7 @@ const BookDetailPage = () => {
   };
 
   if (loading) {
-    return <div style={{ padding: 16 }}>책 정보를 불러오는 중...</div>;
+    return <Loading text="책 정보를 불러오는 중입니다." />;
   }
 
   if (!book) {

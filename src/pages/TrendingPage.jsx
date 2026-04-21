@@ -3,6 +3,7 @@ import "./BookGridPage.css";
 import { useEffect, useState } from "react";
 import { fetchTrendingBooks } from "../api/bookApi";
 import { getLastCategory } from "../utils/recommendUtils";
+import SkeletonCard from "../components/common/skeleton/SkeletonCard";
 
 const TrendingPage = () => {
   const nav = useNavigate();
@@ -28,7 +29,21 @@ const TrendingPage = () => {
   }, []);
 
   if (loading) {
-    return <div className="book-grid-page-state">인기 책을 불러오는 중...</div>;
+    return (
+      <section className="book-grid-page">
+        <div className="book-grid-page-header">
+          <p className="book-grid-page-label">TRENDING</p>
+          <h1 className="book-grid-page-title">지금 인기 있는 책</h1>
+          <p className="book-grid-page-desc">인기 책을 불러오는 중...</p>
+        </div>
+
+        <div className="book-grid">
+          {Array.from({ length: 10 }).map((_, index) => (
+            <SkeletonCard key={index} />
+          ))}
+        </div>
+      </section>
+    );
   }
 
   return (

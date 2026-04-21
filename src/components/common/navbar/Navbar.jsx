@@ -42,7 +42,7 @@ const Navbar = () => {
       <div className="navbar-container">
         <div className="navbar-left">
           <div className="navbar-logo" onClick={() => nav("/")}>
-            책갈피
+            Re:Book
           </div>
 
           <nav className="navbar-menu">
